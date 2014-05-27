@@ -124,12 +124,56 @@ Window.prototype.draw = function () {
 Window.prototype.drawHealth = function (x,y, player) {
 
     //Outline of Health Bar
-    this.context.strokeStyle = 'yellow';
+    this.context.strokeStyle = 'black';
     this.context.strokeRect(x, y, 100, 10);
 
     //Bar Changes Colours When HP Decreases
-    this.context.fillStyle = 'yellow';
-    this.context.fillRect(x, y, player.health, 10);
+    if(player.health > 70){
+        this.context.fillStyle = '#FF0000';
+        this.context.fillRect(x, y, player.health, 10);
+    }
+    else if(player.health <= 70 && player.health > 50){
+        this.context.fillStyle = '#C80000';
+        this.context.fillRect(x, y, player.health, 10);
+    }
+    else if(player.health <= 50 && player.health > 30){
+        this.context.fillStyle = '#A00000';
+        this.context.fillRect(x, y, player.health, 10);
+    }
+    else if(player.health <= 30 && player.health > 20){
+        this.context.fillStyle = '#880000';
+        this.context.fillRect(x, y, player.health, 10);
+    }
+    else if (player.health <= 20 && player.health > 10){
+        this.context.fillStyle = '#600000';
+        this.context.fillRect(x, y, player.health, 10);
+    }
+    else if(player.health <= 10 && player.health >= 0){
+        this.context.fillStyle = '#280000';
+        this.context.fillRect(x, y, player.health, 10);
+    }
+
+    //HP Text
+    this.context.fillStyle = 'black';
+    this.context.font = 'bold 9pt Arial';
+    yt = y * -1;  //was9
+    xt = x + 40;
+
+    //Sets HP to 'Dead' once the player dies and removes the Health number
+    if(player.health <= 0){
+        player.health = 0;
+        this.context.scale(1,-1);
+        this.context.fillText('Dead', xt, yt);
+        this.context.scale(1,-1);
+    }
+    //Shows the amount of HP each player has on the health bar as long as the player is not dead
+    else{
+        this.context.scale(1,-1);
+        this.context.fillText(player.health, xt, yt);
+        this.context.scale(1,-1);
+
+    }
+
 
 
 }
