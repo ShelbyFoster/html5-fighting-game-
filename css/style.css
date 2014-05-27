@@ -1,0 +1,35 @@
+
+.controls ul{
+    padding: 0;
+    list-style-type: none;
+    color: black;
+    font-size: 14px;
+    padding: 0;
+
+}
+canvas {
+    border: solid 1px #ccc;
+    padding: 5px;
+    display:block;
+}
+
+#game_over {
+    position: absolute;
+    left: 150px;
+    top: 100px;
+}
+
+#fight {
+    position: absolute;
+    left: 150px;
+    top: 100px;
+}
+
+.play{
+    font-size:20px;
+}
+.controls {
+    float: left;
+    position: relative;
+}
+
